@@ -6,32 +6,24 @@ use warnings;
 my @a = ();
 
 our $k = 0;
-for(; $k < 5; $k++){
 
-	push(@a,$k^$k+2*$k+1);
+printf("データ数を入力してください:");
+$k = <STDIN>;
 
-}
-#配列生成
+our $j;
 
-our $j = $k;
+for($j = 0;$j < $k; $j++){
 
-for(;$k < 25; $k++){
-
-	push(@a,int(rand(25)));
+	push(@a,int(rand($j) + $j));
 
 }
+$j = 0;
 
-print "配列生成完了\n";
 &out_vars(@a);
-
 our $n = @a;
 
 for(; $j < $n; $j++){
 
-	print("Sorting....\n");
-
-	&out_vars(@a);
-	
 	my $key = $a[$j];
 
 	my $i = $j-1;
@@ -61,10 +53,8 @@ sub out_vars {
 
 	foreach (@array) {
 
-		print "$_ | "
+		print " $_ \n"
 		
 	}
-
-	print "\n";
 
 }
