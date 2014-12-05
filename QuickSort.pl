@@ -17,16 +17,6 @@ print Dumper @array;
 
 my $before;
 
-foreach $_ (@array){
-
-	if(!defined($before) || $before <= $_){
-		$before = $_;
-	}else{
-		print "Bug Found!!\n";
-	}
-
-}
-
 print Dumper @array;
 
 sub quicksort {
@@ -37,6 +27,8 @@ sub quicksort {
 		my $q = &partition($array_ref,$p,$r);
 		&quicksort($array_ref,$p,$q-1);
 		&quicksort($array_ref,$q+1,$r);
+	}else{
+		print "0 0 partition detected! \n";
 	}
 
 }
