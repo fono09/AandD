@@ -6,13 +6,27 @@
 int ref(int (*q)[LENGTH][LENGTH]){
 
 	int i,j,k;
+	int (*r)[LENGTH];
+	int *s;
+	int t;
 	for(i = 0; i < LENGTH; i++){
+
+		r = q[i];
+		printf("int (*r)[%d] = q[%d] = %p\n",LENGTH,i,q);
+
 		for(j = 0; j < LENGTH; j++){
+
+			s = r[j];
+			printf("int (*s) = r[%d] = %p\n",j,s);
+
+			printf("int t = s[0..%d] =(",LENGTH-1);
 			for(k = 0; k < LENGTH; k++){
 
-				printf("q = %p,q[i] = %p,q[i][j] = %p,q[i][j][k] = %d \n",q,q[i],q[i][j],q[i][j][k]);
+				t = s[k];
+				printf("%d ",t);
 
 			}
+			printf(")\n");
 
 		}
 
@@ -38,33 +52,18 @@ int main(){
 			for(k = 0; k < LENGTH; k++){
 
 
-				p[i][j][k] = rand()%LENGTH;
-				printf("test[i][j][k] = %d,p[i][j][k] = %d\n",test[i][j][k],p[i][j][k]);
+				p[i][j][k] = rand()%(LENGTH*LENGTH*LENGTH);
 
 			}
 
 		}
 
 	}
-	printf("test = %p\np = %p\n",test,p);
 	
 	printf("Start ref(p)\n");
 	ref(p);
 	printf("End ref(p)\n");
 
-	for(i = 0; i < LENGTH; i++){
-
-		for(j = 0; j < LENGTH; j++){
-
-			for(k = 0; k < LENGTH; k++){
-
-				printf("p[i][j][k] = %d\n",p[i][j][k]);
-
-			}
-
-		}
-
-	}
 
 	return 0;
 
