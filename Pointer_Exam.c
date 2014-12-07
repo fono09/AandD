@@ -1,16 +1,23 @@
 #include<stdio.h>
 #include<time.h>
 
-#define LENGTH 2
+#define LENGTH 3
 
-int ref(void *q){
+int ref(int (*q)[LENGTH][LENGTH]){
 
-	int i;
+	int i,j,k;
 	for(i = 0; i < LENGTH; i++){
+		for(j = 0; j < LENGTH; j++){
+			for(k = 0; k < LENGTH; k++){
 
-		printf("q = %p,i = %d,q+i = %p\n",q,i,q+i);
+				printf("q = %p,q[i] = %p,q[i][j] = %p,q[i][j][k] = %d \n",q,q[i],q[i][j],q[i][j][k]);
+
+			}
+
+		}
 
 	}
+
 
 	return 0;
 }
